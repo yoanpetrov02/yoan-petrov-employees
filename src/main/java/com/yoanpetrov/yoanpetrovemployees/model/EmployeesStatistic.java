@@ -1,6 +1,5 @@
 package com.yoanpetrov.yoanpetrovemployees.model;
 
-import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -109,14 +108,6 @@ public class EmployeesStatistic {
         Date startB = b.getDateFrom();
         Date endB = b.getDateTo();
 
-        if (endA == null) {
-            endA = new Date();
-            a.setDateTo(endA);
-        }
-        if (endB == null) {
-            endB = new Date();
-            b.setDateTo(endB);
-        }
         return !(startA.after(endB)) && !(endA.before(startB));
     }
 
@@ -153,20 +144,5 @@ public class EmployeesStatistic {
         long diffA = Math.max(startA.getTime(), startB.getTime());
         long diffB = Math.min(endA.getTime(), endB.getTime());
         return Math.abs(diffB - diffA);
-    }
-
-
-    public static void main(String[] args) throws ParseException {
-        /*SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        List<EmployeeProjectRecord> records = List.of(
-                new EmployeeProjectRecord(1, 1, format.parse("30/10/2020"), null),
-                new EmployeeProjectRecord(2, 1, format.parse("12/11/2020"), format.parse("15/11/2020")),
-                new EmployeeProjectRecord(3, 2, format.parse("13/05/2023"), format.parse("07/09/2023")),
-                new EmployeeProjectRecord(1, 2, format.parse("16/07/2023"), format.parse("07/09/2023"))
-        );
-        EmployeesStatistic statistic = new EmployeesStatistic(records);
-
-        System.out.println(statistic.getBestPair());
-        System.out.println(Arrays.toString(statistic.getAllPairs().toArray()));*/
     }
 }
