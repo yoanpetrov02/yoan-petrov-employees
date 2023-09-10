@@ -83,6 +83,10 @@ public class AppController {
             showErrorMessage("The file is empty or in the wrong format. Please, choose another file!");
             return;
         }
+        showPairs(records);
+    }
+
+    private void showPairs(List<EmployeeProjectRecord> records) {
         List<EmployeePair> pairs = employeeService.getEmployeesStatistic(records).getAllPairs();
         ObservableList<EmployeePair> tableItems = FXCollections.observableList(pairs);
         employeesTable.setItems(tableItems);

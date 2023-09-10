@@ -9,7 +9,8 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    public EmployeesStatistic getEmployeesStatistic(List<EmployeeProjectRecord> employeeRecords) {
+    public EmployeesStatistic getEmployeesStatistic(
+            List<EmployeeProjectRecord> employeeRecords) {
         return new EmployeesStatistic(employeeRecords);
     }
 }

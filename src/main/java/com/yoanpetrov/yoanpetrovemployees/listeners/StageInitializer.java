@@ -5,7 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -17,6 +18,8 @@ import java.net.URL;
 
 @Component
 public class StageInitializer implements ApplicationListener<StageReadyEvent> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(StageInitializer.class);
 
     private final String applicationTitle;
     private final Resource fxml;
@@ -44,7 +47,7 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
             stage.setTitle(applicationTitle);
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("An error occurred while loading FXML file.", e);
         }
     }
 }
