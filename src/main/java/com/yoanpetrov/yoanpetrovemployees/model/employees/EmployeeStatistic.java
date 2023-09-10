@@ -1,37 +1,27 @@
-package com.yoanpetrov.yoanpetrovemployees.model;
+package com.yoanpetrov.yoanpetrovemployees.model.employees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Responsible for creating a statistic for which
  * employee pair has worked the most on the same project together.
  */
-public class EmployeesStatistic {
+public class EmployeeStatistic {
 
     private final List<EmployeeProjectRecord> records;
     private List<EmployeePair> pairs;
-    private EmployeePair bestPair;
 
     /**
      * Creates a new statistic instance.
      *
      * @param records the list of employee project records to create a statistic for.
      */
-    public EmployeesStatistic(List<EmployeeProjectRecord> records) {
+    public EmployeeStatistic(List<EmployeeProjectRecord> records) {
         this.records = records;
-    }
-
-    /**
-     * Returns the best pair of employees, or calculates it if it wasn't calculated yet.
-     *
-     * @return the best pair.
-     */
-    public EmployeePair getBestPair() {
-        if (bestPair == null) {
-            calculateBestPair();
-        }
-        return bestPair;
     }
 
     public List<EmployeePair> getAllPairs() {
@@ -71,9 +61,6 @@ public class EmployeesStatistic {
             }
         }
         Collections.sort(pairs);
-        if (!pairs.isEmpty()) {
-            bestPair = pairs.get(0);
-        }
     }
 
     /**

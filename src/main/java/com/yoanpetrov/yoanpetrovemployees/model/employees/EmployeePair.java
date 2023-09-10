@@ -1,4 +1,4 @@
-package com.yoanpetrov.yoanpetrovemployees.model;
+package com.yoanpetrov.yoanpetrovemployees.model.employees;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;

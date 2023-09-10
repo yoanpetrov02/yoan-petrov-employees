@@ -1,4 +1,4 @@
-package com.yoanpetrov.yoanpetrovemployees.model;
+package com.yoanpetrov.yoanpetrovemployees.model.employees;
 
 import java.util.Date;
 import java.util.Objects;

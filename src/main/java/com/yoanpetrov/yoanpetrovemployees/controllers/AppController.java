@@ -1,7 +1,7 @@
 package com.yoanpetrov.yoanpetrovemployees.controllers;
 
-import com.yoanpetrov.yoanpetrovemployees.model.EmployeePair;
-import com.yoanpetrov.yoanpetrovemployees.model.EmployeeProjectRecord;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeePair;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeeProjectRecord;
 import com.yoanpetrov.yoanpetrovemployees.services.CsvService;
 import com.yoanpetrov.yoanpetrovemployees.services.EmployeeService;
 import javafx.collections.FXCollections;
@@ -83,10 +83,10 @@ public class AppController {
             showErrorMessage("The file is empty or in the wrong format. Please, choose another file!");
             return;
         }
-        showPairs(records);
+        displayPairs(records);
     }
 
-    private void showPairs(List<EmployeeProjectRecord> records) {
+    private void displayPairs(List<EmployeeProjectRecord> records) {
         List<EmployeePair> pairs = employeeService.getEmployeesStatistic(records).getAllPairs();
         ObservableList<EmployeePair> tableItems = FXCollections.observableList(pairs);
         employeesTable.setItems(tableItems);

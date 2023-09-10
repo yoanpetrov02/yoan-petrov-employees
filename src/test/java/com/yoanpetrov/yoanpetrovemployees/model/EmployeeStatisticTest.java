@@ -1,5 +1,8 @@
 package com.yoanpetrov.yoanpetrovemployees.model;
 
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeePair;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeeProjectRecord;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeeStatistic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-public class EmployeesStatisticTest {
+public class EmployeeStatisticTest {
 
     private static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -18,7 +21,7 @@ public class EmployeesStatisticTest {
                 new EmployeeProjectRecord(1, 1, FORMAT.parse("10/10/2010"), FORMAT.parse("20/10/2010")),
                 new EmployeeProjectRecord(2, 1, FORMAT.parse("15/10/2010"), FORMAT.parse("20/10/2010"))
         );
-        EmployeesStatistic statistic = new EmployeesStatistic(records);
+        EmployeeStatistic statistic = new EmployeeStatistic(records);
         EmployeePair expected = new EmployeePair(1, 2, 1, 5);
         EmployeePair actual = statistic.getBestPair();
 
@@ -33,7 +36,7 @@ public class EmployeesStatisticTest {
                 new EmployeeProjectRecord(3, 1, FORMAT.parse("15/10/2010"), FORMAT.parse("30/10/2010"))
 
         );
-        EmployeesStatistic statistic = new EmployeesStatistic(records);
+        EmployeeStatistic statistic = new EmployeeStatistic(records);
         List<EmployeePair> expected = List.of(
                 new EmployeePair(1, 3, 1, 15),
                 new EmployeePair(1, 2, 1, 5),

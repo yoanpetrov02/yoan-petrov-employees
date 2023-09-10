@@ -1,6 +1,6 @@
 package com.yoanpetrov.yoanpetrovemployees.services;
 
-import com.yoanpetrov.yoanpetrovemployees.model.EmployeeProjectRecord;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeeProjectRecord;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

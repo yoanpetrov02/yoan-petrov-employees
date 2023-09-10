@@ -1,6 +1,6 @@
 package com.yoanpetrov.yoanpetrovemployees.services;
 
-import com.yoanpetrov.yoanpetrovemployees.model.EmployeeProjectRecord;
+import com.yoanpetrov.yoanpetrovemployees.model.employees.EmployeeProjectRecord;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

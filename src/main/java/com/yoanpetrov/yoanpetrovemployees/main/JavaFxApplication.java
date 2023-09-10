@@ -28,8 +28,8 @@ public class JavaFxApplication extends Application {
                     ac.registerBean(CsvService.class);
                 };
 
-        applicationContext = new SpringApplicationBuilder(EmployeesApplication.class)
-                .sources(EmployeesApplication.class)
+        applicationContext = new SpringApplicationBuilder(ApplicationRunner.class)
+                .sources(ApplicationRunner.class)
                 .initializers(initializer)
                 .run();
     }
