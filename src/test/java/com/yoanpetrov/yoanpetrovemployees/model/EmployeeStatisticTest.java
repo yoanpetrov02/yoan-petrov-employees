@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeStatisticTest {
@@ -30,7 +29,6 @@ public class EmployeeStatisticTest {
                 new EmployeePair(2, 3, 1, 5)
         );
         List<EmployeePair> actual = statistic.getAllPairs();
-        System.out.println(Arrays.toString(actual.toArray()));
 
         Assertions.assertArrayEquals(expected.toArray(), actual.toArray());
     }
