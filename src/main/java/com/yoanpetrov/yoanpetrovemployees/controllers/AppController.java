@@ -54,10 +54,13 @@ public class AppController {
         TableColumn<EmployeePair, String> daysWorkedTogether = new TableColumn<>("Days worked");
 
         employeeIdA.setPrefWidth(85);
+        employeeIdA.setResizable(false);
         employeeIdB.setPrefWidth(85);
+        employeeIdB.setResizable(false);
         projectId.setPrefWidth(75);
+        projectId.setResizable(false);
         daysWorkedTogether.setPrefWidth(85);
-
+        daysWorkedTogether.setResizable(false);
         employeeIdA.setCellValueFactory(new PropertyValueFactory<>("employeeIdA"));
         employeeIdB.setCellValueFactory(new PropertyValueFactory<>("employeeIdB"));
         projectId.setCellValueFactory(new PropertyValueFactory<>("projectId"));
@@ -75,7 +78,9 @@ public class AppController {
         FileChooser chooser = new FileChooser();
         chooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
         csv = chooser.showOpenDialog(new Stage());
-        chosenFileLabel.setText("Chosen file: " + csv.getName());
+        if (csv != null) {
+            chosenFileLabel.setText("Chosen file: " + csv.getName());
+        }
     }
 
     /**

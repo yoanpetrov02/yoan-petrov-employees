@@ -3,8 +3,6 @@ package com.yoanpetrov.yoanpetrovemployees.main;
 import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// TODO: 10-Sep-23 Document everything.
-// TODO: 10-Sep-23 Clean up code.
 // TODO: 10-Sep-23 Make final tests to be sure that everything works properly.
 
 /**

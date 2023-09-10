@@ -53,6 +53,7 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle(applicationTitle);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             LOGGER.error("An error occurred while loading FXML file.", e);

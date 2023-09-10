@@ -14,10 +14,13 @@
             <HBox.margin>
                 <Insets />
             </HBox.margin>
-         <Label fx:id="chosenFileLabel" text="No chosen file.">
+         <Label fx:id="chosenFileLabel" alignment="CENTER" contentDisplay="CENTER" text="No file chosen." textAlignment="CENTER" wrapText="true">
             <VBox.margin>
                <Insets bottom="30.0" />
             </VBox.margin>
+            <padding>
+               <Insets left="10.0" right="10.0" />
+            </padding>
          </Label>
             <Button mnemonicParsing="false" onAction="#chooseFile" text="Choose new file">
                 <VBox.margin>
