@@ -42,15 +42,35 @@ public class CsvServiceTest {
         );
         List<EmployeeProjectRecord> actual = SERVICE.readRecordsFromCsv(testCsv);
 
-        Assertions.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadRecordsNullDateTo() throws IOException {
+    public void testReadRecordsNullDate() throws IOException {
         writeLines(new String[] {"143, 12, 2013-11-01, NULL"});
         List<EmployeeProjectRecord> records = SERVICE.readRecordsFromCsv(testCsv);
 
         Assertions.assertNotNull(records.get(0).getDateTo());
+    }
+
+    @Test
+    public void testReadRecordsDifferentFormats() throws IOException, ParseException {
+        writeLines(new String[] {
+                "143, 12, 2013-11-01, 2014-01-05",
+                "218, 10, 2012-05-16, 13-02-2013",
+                "143, 10, 2009-01-01, 04-27-2011",
+        });
+        List<EmployeeProjectRecord> expected = List.of(
+                new EmployeeProjectRecord(
+                        143, 12, DATE_FORMAT.parse("2013-11-01"), DATE_FORMAT.parse("2014-01-05")),
+                new EmployeeProjectRecord(
+                        218, 10, DATE_FORMAT.parse("2012-05-16"), DATE_FORMAT.parse("2013-02-13")),
+                new EmployeeProjectRecord(
+                        143, 10, DATE_FORMAT.parse("2009-01-01"), DATE_FORMAT.parse("2011-04-27"))
+        );
+        List<EmployeeProjectRecord> actual = SERVICE.readRecordsFromCsv(testCsv);
+
+        Assertions.assertEquals(expected, actual);
     }
 
     private void writeLines(String[] lines) throws IOException {

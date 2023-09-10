@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -53,9 +52,8 @@ public class CsvService {
     }
 
     private EmployeeProjectRecord parseData(String[] data) {
+        EmployeeProjectRecord record = new EmployeeProjectRecord();
         try {
-            EmployeeProjectRecord record = new EmployeeProjectRecord();
-
             record.setEmployeeId(Integer.parseInt(data[0].trim()));
             record.setProjectId(Integer.parseInt(data[1].trim()));
             record.setDateFrom(DateUtils.parseDateStrictly(data[2], DATE_FORMATS));
