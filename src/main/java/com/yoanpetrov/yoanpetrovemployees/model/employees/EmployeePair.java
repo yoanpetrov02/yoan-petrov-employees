@@ -5,6 +5,10 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 
+/**
+ * An employee pair. An instance has information about how long
+ * two employees have worked on the same project at the same time.
+ */
 public class EmployeePair implements Comparable<EmployeePair> {
 
     private final IntegerProperty employeeIdA;

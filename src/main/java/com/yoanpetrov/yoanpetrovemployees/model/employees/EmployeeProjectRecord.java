@@ -3,6 +3,10 @@ package com.yoanpetrov.yoanpetrovemployees.model.employees;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * An employee project record. An instance contains information about
+ * the time period when an employee has worked on a certain project.
+ */
 public class EmployeeProjectRecord {
 
     private int employeeId;

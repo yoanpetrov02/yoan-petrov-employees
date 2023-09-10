@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Listener that loads the application's UI from an whenever a {@code StageReadyEvent} gets published.
+ */
 @Component
 public class StageInitializer implements ApplicationListener<StageReadyEvent> {
 
@@ -34,6 +37,11 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
         this.ac = ac;
     }
 
+    /**
+     * Loads the app's UI from the FXML file.
+     *
+     * @param event the {@code StageReadyEvent} that triggered the listener.
+     */
     @Override
     public void onApplicationEvent(StageReadyEvent event) {
         Stage stage = event.getStage();

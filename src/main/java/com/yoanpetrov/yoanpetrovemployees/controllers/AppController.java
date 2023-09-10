@@ -19,6 +19,9 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Controller class for the application. Responsible for handling user input.
+ */
 @Component
 public class AppController {
 
@@ -37,6 +40,9 @@ public class AppController {
         this.employeeService = employeeService;
     }
 
+    /**
+     * Initializes objects that are important for the application's proper functioning.
+     */
     public void initialize() {
         errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setTitle("Error");
@@ -60,6 +66,9 @@ public class AppController {
         employeesTable.getColumns().setAll(List.of(employeeIdA, employeeIdB, projectId, daysWorkedTogether));
     }
 
+    /**
+     * Displays a file chooser in a new window to let the user choose a csv file to load.
+     */
     @FXML
     public void chooseFile() {
         employeesTable.setVisible(false);
@@ -69,6 +78,10 @@ public class AppController {
         chosenFileLabel.setText("Chosen file: " + csv.getName());
     }
 
+    /**
+     * Parses the csv file using {@code CsvService} and displays the pairs in a table.
+     * If the file was empty or in a wrong format, an error message appears and the selected file is cleared.
+     */
     @FXML
     public void viewBestPairs() {
         if (employeesTable.isVisible()) {
@@ -81,18 +94,31 @@ public class AppController {
         List<EmployeeProjectRecord> records = csvService.readRecordsFromCsv(csv);
         if (records.isEmpty()) {
             showErrorMessage("The file is empty or in the wrong format. Please, choose another file!");
+            chosenFileLabel.setText("No file chosen.");
+            csv = null;
             return;
         }
         displayPairs(records);
     }
 
+    /**
+     * Displays all employee pairs from the file after calculating the best pairs and sorting them
+     * using {@code EmployeeStatistic}.
+     *
+     * @param records the records to go through.
+     */
     private void displayPairs(List<EmployeeProjectRecord> records) {
-        List<EmployeePair> pairs = employeeService.getEmployeesStatistic(records).getAllPairs();
+        List<EmployeePair> pairs = employeeService.getEmployeeStatistic(records).getAllPairs();
         ObservableList<EmployeePair> tableItems = FXCollections.observableList(pairs);
         employeesTable.setItems(tableItems);
         employeesTable.setVisible(true);
     }
 
+    /**
+     * Displays the given error message in an {@code Alert} box.
+     *
+     * @param message the error message to display.
+     */
     private void showErrorMessage(String message) {
         Label content = new Label(message);
         content.setWrapText(true);

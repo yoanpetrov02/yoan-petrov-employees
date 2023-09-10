@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Responsible for creating a statistic for which
- * employee pair has worked the most on the same project together.
+ * employee pairs have worked the most on the same projects at the same time.
  */
 public class EmployeeStatistic {
 
@@ -16,7 +16,7 @@ public class EmployeeStatistic {
     private List<EmployeePair> pairs;
 
     /**
-     * Creates a new statistic instance.
+     * Creates a new statistic.
      *
      * @param records the list of employee project records to create a statistic for.
      */
@@ -26,16 +26,16 @@ public class EmployeeStatistic {
 
     public List<EmployeePair> getAllPairs() {
         if (pairs == null) {
-            calculateBestPair();
+            calculateBestPairs();
         }
         return pairs;
     }
 
     /**
-     * Calculates which two employees have worked on the same project
-     * together for the most time and updates the best pair.
+     * Calculates which employee pairs have worked on the same project
+     * together for the most time.
      */
-    private void calculateBestPair() {
+    private void calculateBestPairs() {
         pairs = new ArrayList<>();
         for (int i = 0; i < records.size(); i++) {
             for (int j = 0; j < records.size(); j++) {
@@ -82,8 +82,7 @@ public class EmployeeStatistic {
     }
 
     /**
-     * Checks whether the periods of time when the employees worked on the project overlap. If the ending dates
-     * are null, they will be set to today and the records will be updated.
+     * Checks whether the periods of time when the employees worked on the project overlap.
      *
      * @param a the record of the first employee.
      * @param b the record of the second employee.
@@ -99,19 +98,21 @@ public class EmployeeStatistic {
     }
 
     /**
-     * Calculates the overlapping period when the two employees worked together on the same project in days.
+     * Calculates the length of the overlapping period
+     * when the two employees worked together on the same project in days.
      *
      * @param a the record of the first employee.
      * @param b the record of the second employee.
      * @return the overlapping period in days.
      */
     private long getOverlappingPeriodDays(EmployeeProjectRecord a, EmployeeProjectRecord b) {
-        long overlappingPeriodMillis = getOverlappingPeriodMillis(a, b);
-        return TimeUnit.DAYS.convert(overlappingPeriodMillis, TimeUnit.MILLISECONDS);
+        return TimeUnit.DAYS.convert(
+                getOverlappingPeriodMillis(a, b),
+                TimeUnit.MILLISECONDS);
     }
 
     /**
-     * Calculates the overlapping period in milliseconds.
+     * Calculates the length of the overlapping period in milliseconds.
      *
      * @param a the record of the first employee.
      * @param b the record of the second employee.
